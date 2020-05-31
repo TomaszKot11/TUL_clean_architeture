@@ -1,4 +1,4 @@
-package main.java.com.tomaszkot.calculator;
+package com.tomaszkot.calculator;
 
 public abstract class Calculator {
     public abstract void runCalculator();
@@ -28,7 +28,6 @@ public abstract class Calculator {
             parsed = Double.parseDouble(arg);
         } catch (NumberFormatException ex) {
             System.out.println("Argument is not numeric!");
-            System.exit(1);
         }
         return parsed;
     }

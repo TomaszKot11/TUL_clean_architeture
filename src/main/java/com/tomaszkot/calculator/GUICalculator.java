@@ -1,4 +1,4 @@
-package main.java.com.tomaszkot.calculator;
+package com.tomaszkot.calculator;
 
 import javax.swing.*;
 import java.awt.*;

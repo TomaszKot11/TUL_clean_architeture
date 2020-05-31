@@ -1,9 +1,5 @@
 package com.tomaszkot.calculator;
 
-import main.java.com.tomaszkot.calculator.Calculator;
-import main.java.com.tomaszkot.calculator.GUICalculator;
-import main.java.com.tomaszkot.calculator.TextCalculator;
-
 import java.util.Scanner;
 
 public class Main {
