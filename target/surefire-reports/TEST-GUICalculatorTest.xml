@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="32" failures="0" name="GUICalculatorTest" time="0.429" errors="0" skipped="0">
+<testsuite tests="34" failures="0" name="GUICalculatorTest" time="1.099" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="9.0.4+11"/>
@@ -63,36 +63,38 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="GUICalculatorTest" name="btn3ListenerShouldBeInitialzied" time="0.337"/>
+  <testcase classname="GUICalculatorTest" name="btn3ListenerShouldBeInitialzied" time="0.415"/>
   <testcase classname="GUICalculatorTest" name="multiplyBtnShouldBeInitialized" time="0.003"/>
   <testcase classname="GUICalculatorTest" name="btn2ListenerShouldBeInitialzied" time="0.004"/>
   <testcase classname="GUICalculatorTest" name="numeric0BtnShouldBeInitialized" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="numeric7BtnShouldBeInitialized" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="btn1ListenerShouldBeInitialzied" time="0.004"/>
-  <testcase classname="GUICalculatorTest" name="btn0ListenerShouldBeInitialzied" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="btnAddListenerShouldBeInitialzied" time="0.004"/>
-  <testcase classname="GUICalculatorTest" name="numeric4BtnShouldBeInitialized" time="0.004"/>
-  <testcase classname="GUICalculatorTest" name="pointBtnShouldBeInitialized" time="0.004"/>
+  <testcase classname="GUICalculatorTest" name="numeric7BtnShouldBeInitialized" time="0.002"/>
+  <testcase classname="GUICalculatorTest" name="btn1ListenerShouldBeInitialzied" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="btn0ListenerShouldBeInitialzied" time="0.005"/>
+  <testcase classname="GUICalculatorTest" name="btnAddListenerShouldBeInitialzied" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="numeric4BtnShouldBeInitialized" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="shouldProperlyAddTwoNumbers" time="0.331"/>
+  <testcase classname="GUICalculatorTest" name="pointBtnShouldBeInitialized" time="0.003"/>
   <testcase classname="GUICalculatorTest" name="numeric1BtnShouldBeInitialized" time="0.003"/>
   <testcase classname="GUICalculatorTest" name="numeric8BtnShouldBeInitialized" time="0.004"/>
-  <testcase classname="GUICalculatorTest" name="btnSubstractListenerShouldBeInitialzied" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="numeric5BtnShouldBeInitialized" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="btnEqualListenerShouldBeInitialzied" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="btn9ListenerShouldBeInitialzied" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="numeric2BtnShouldBeInitialized" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="btnSubstractListenerShouldBeInitialzied" time="0.004"/>
+  <testcase classname="GUICalculatorTest" name="numeric5BtnShouldBeInitialized" time="0.004"/>
+  <testcase classname="GUICalculatorTest" name="shouldProperlyHandleDivisionByZero" time="0.278"/>
+  <testcase classname="GUICalculatorTest" name="btnEqualListenerShouldBeInitialzied" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="btn9ListenerShouldBeInitialzied" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="numeric2BtnShouldBeInitialized" time="0.002"/>
   <testcase classname="GUICalculatorTest" name="subtractBtnShouldBeInitialized" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="btnDivideListenerShouldBeInitialzied" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="numeric9BtnShouldBeInitialized" time="0.001"/>
-  <testcase classname="GUICalculatorTest" name="divideBtnShouldBeInitialized" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="btn8ListenerShouldBeInitialzied" time="0.004"/>
+  <testcase classname="GUICalculatorTest" name="btnDivideListenerShouldBeInitialzied" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="numeric9BtnShouldBeInitialized" time="0.002"/>
+  <testcase classname="GUICalculatorTest" name="divideBtnShouldBeInitialized" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="btn8ListenerShouldBeInitialzied" time="0.001"/>
   <testcase classname="GUICalculatorTest" name="btn7ListenerShouldBeInitialzied" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="numeric6BtnShouldBeInitialized" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="numeric6BtnShouldBeInitialized" time="0.002"/>
   <testcase classname="GUICalculatorTest" name="btn6ListenerShouldBeInitialzied" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="addBtnShouldBeInitialized" time="0.004"/>
-  <testcase classname="GUICalculatorTest" name="btnMultiplyListenerShouldBeInitialzied" time="0.004"/>
+  <testcase classname="GUICalculatorTest" name="addBtnShouldBeInitialized" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="btnMultiplyListenerShouldBeInitialzied" time="0.003"/>
   <testcase classname="GUICalculatorTest" name="btnPointListenerShouldBeInitialzied" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="btn5ListenerShouldBeInitialzied" time="0.003"/>
+  <testcase classname="GUICalculatorTest" name="btn5ListenerShouldBeInitialzied" time="0.002"/>
   <testcase classname="GUICalculatorTest" name="numeric3BtnShouldBeInitialized" time="0.002"/>
-  <testcase classname="GUICalculatorTest" name="btn4ListenerShouldBeInitialzied" time="0.003"/>
-  <testcase classname="GUICalculatorTest" name="equalBtnShouldBeInitialized" time="0.002"/>
+  <testcase classname="GUICalculatorTest" name="btn4ListenerShouldBeInitialzied" time="0.001"/>
+  <testcase classname="GUICalculatorTest" name="equalBtnShouldBeInitialized" time="0.003"/>
 </testsuite>

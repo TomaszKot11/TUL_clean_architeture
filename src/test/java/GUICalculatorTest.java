@@ -17,6 +17,33 @@ public class GUICalculatorTest {
         guiCalculator = new GUICalculator();
     }
 
+
+    // przykładowy test mnozenia "z palca"
+    @Test
+    public void shouldProperlyAddTwoNumbers() {
+        // when
+        guiCalculator.getBtn2().doClick();
+        guiCalculator.getBtnMul().doClick();
+        guiCalculator.getBtn3().doClick();
+        guiCalculator.getBtnEqual().doClick();
+
+        // then
+        assertTrue(guiCalculator.getInText().getText().equals("6"));
+    }
+
+    // przykład testowania dzielenia przez zero
+    @Test
+    public void shouldProperlyHandleDivisionByZero() {
+        // when
+        guiCalculator.getBtn2().doClick();
+        guiCalculator.getBtnDiv().doClick();
+        guiCalculator.getBtn0().doClick();
+        guiCalculator.getBtnEqual().doClick();
+
+        // then
+        assertTrue(guiCalculator.getInText().getText().equals("Infinity"));
+    }
+
     @Test
     public void numeric9BtnShouldBeInitialized() {
         assertNotNull(guiCalculator.getBtn9());

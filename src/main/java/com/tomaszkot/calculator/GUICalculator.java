@@ -468,4 +468,8 @@ public class GUICalculator extends Calculator {
     public JButton getBtnEqual() {
         return btnEqual;
     }
+
+    public JTextField getInText() {
+        return inText;
+    }
 }
