@@ -6,7 +6,7 @@ public class TextCalculator extends Calculator {
     private Scanner scanner = new Scanner(System.in);
 
     public void runCalculator() {
-        while(true) {
+        while (true) {
             System.out.println("Prosze wpisac pierwszy argument operacji:");
             String arg1 = scanner.next();
             System.out.println("Proszę wybrać operację (+, -, *, /)");

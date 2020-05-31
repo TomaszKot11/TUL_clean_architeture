@@ -245,7 +245,7 @@ public class GUICalculator extends Calculator {
 
     private void configureFunctionalBtnListeners() {
         btnDiv = new JButton("/");
-        btnDiv.setBounds(x[0], y[1], 3 *  BUTTON_WIDTH + 20, BUTTON_HEIGHT);
+        btnDiv.setBounds(x[0], y[1], 3 * BUTTON_WIDTH + 20, BUTTON_HEIGHT);
         btnDiv.setFont(btnFont);
         btnDiv.setCursor(new Cursor(Cursor.HAND_CURSOR));
         btnDiv.addActionListener(event -> {
@@ -294,7 +294,8 @@ public class GUICalculator extends Calculator {
         btnSub.setBounds(x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);
         btnSub.setFont(btnFont);
         btnSub.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnSub.addActionListener(event -> { ;
+        btnSub.addActionListener(event -> {
+            ;
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "-" : opt;
@@ -316,10 +317,11 @@ public class GUICalculator extends Calculator {
 
 
         btnAdd = new JButton("+");
-        btnAdd.setBounds(x[3], y[4], BUTTON_WIDTH, 2* BUTTON_HEIGHT + 10);
+        btnAdd.setBounds(x[3], y[4], BUTTON_WIDTH, 2 * BUTTON_HEIGHT + 10);
         btnAdd.setFont(btnFont);
         btnAdd.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnAdd.addActionListener(event -> { ;
+        btnAdd.addActionListener(event -> {
+            ;
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "+" : opt;
@@ -355,7 +357,6 @@ public class GUICalculator extends Calculator {
         window.add(btnPoint);
 
 
-
         btnEqual = new JButton("=");
         btnEqual.setBounds(x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);
         btnEqual.setFont(btnFont);
@@ -379,21 +380,21 @@ public class GUICalculator extends Calculator {
 
     @Override
     protected double performOperataion(String arg11, String optt, String arg22) {
-            Double arg1 = str2Double(arg11);
-            Double arg2 = str2Double(arg22);
+        Double arg1 = str2Double(arg11);
+        Double arg2 = str2Double(arg22);
 
-            inText.setFont(inText.getFont().deriveFont(Font.BOLD));
-            if (optt.equals("+")) {
-                return arg1 + arg2;
-            } else if (optt.equals("-")) {
-                return arg1 - arg2;
-            } else if (optt.equals("*")) {
-                return arg1 * arg2;
-            } else if (optt.equals("/")) {
-                return arg1 / arg2;
-            }
-            inText.setFont(inText.getFont().deriveFont(Font.PLAIN));
-            return arg2;
+        inText.setFont(inText.getFont().deriveFont(Font.BOLD));
+        if (optt.equals("+")) {
+            return arg1 + arg2;
+        } else if (optt.equals("-")) {
+            return arg1 - arg2;
+        } else if (optt.equals("*")) {
+            return arg1 * arg2;
+        } else if (optt.equals("/")) {
+            return arg1 / arg2;
+        }
+        inText.setFont(inText.getFont().deriveFont(Font.PLAIN));
+        return arg2;
     }
 
     @Override

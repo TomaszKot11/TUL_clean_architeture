@@ -7,7 +7,7 @@ public abstract class Calculator {
         double arg1Double = str2Double(arg1); // c++ style in Java <3
         double arg2Double = str2Double(arg2);
 
-        switch(op) {
+        switch (op) {
             case "+":
                 return arg1Double + arg2Double;
             case "*":
@@ -26,7 +26,7 @@ public abstract class Calculator {
         double parsed = 0.0;
         try {
             parsed = Double.parseDouble(arg);
-        } catch(NumberFormatException ex) {
+        } catch (NumberFormatException ex) {
             System.out.println("Argument is not numeric!");
             System.exit(1);
         }
