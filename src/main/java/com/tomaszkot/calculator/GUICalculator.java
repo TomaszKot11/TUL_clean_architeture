@@ -405,5 +405,67 @@ public class GUICalculator extends Calculator {
         window.setVisible(true);
     }
 
+    public JButton getBtnDiv() {
+        return btnDiv;
+    }
 
+    public JButton getBtn7() {
+        return btn7;
+    }
+
+    public JButton getBtn8() {
+        return btn8;
+    }
+
+    public JButton getBtn9() {
+        return btn9;
+    }
+
+    public JButton getBtnMul() {
+        return btnMul;
+    }
+
+    public JButton getBtn4() {
+        return btn4;
+    }
+
+    public JButton getBtn5() {
+        return btn5;
+    }
+
+    public JButton getBtn6() {
+        return btn6;
+    }
+
+    public JButton getBtnSub() {
+        return btnSub;
+    }
+
+    public JButton getBtn1() {
+        return btn1;
+    }
+
+    public JButton getBtn2() {
+        return btn2;
+    }
+
+    public JButton getBtn3() {
+        return btn3;
+    }
+
+    public JButton getBtnAdd() {
+        return btnAdd;
+    }
+
+    public JButton getBtnPoint() {
+        return btnPoint;
+    }
+
+    public JButton getBtn0() {
+        return btn0;
+    }
+
+    public JButton getBtnEqual() {
+        return btnEqual;
+    }
 }

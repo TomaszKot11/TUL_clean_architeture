@@ -10,10 +10,9 @@ public class Main {
         System.out.println("[Cmd/GUI] ?:");
         String mode = scanner.next().toLowerCase();
         // by default GUI mode
-        calculator = mode.equals("cmd") ? new TextCalculator() : new GUICalculator();
-        if(mode.equals("cmd"))
-            ((TextCalculator)calculator).setScanner(scanner);
+        calculator = mode.equals("cmd") ? new TextCalculator(scanner) : new GUICalculator();
 
         calculator.runCalculator();
+        scanner.close();
     }
 }

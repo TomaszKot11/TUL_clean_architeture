@@ -5,8 +5,8 @@ import java.util.Scanner;
 public class TextCalculator extends Calculator {
     private Scanner scanner;
 
-    public TextCalculator() {
-        this.scanner = new Scanner(System.in);
+    public TextCalculator(Scanner scanner) {
+        this.scanner = scanner;
     }
 
     public void runCalculator() {

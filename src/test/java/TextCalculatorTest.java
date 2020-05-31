@@ -30,7 +30,7 @@ public class TextCalculatorTest {
 
     @Before
     public void beforeEachTestMethod() {
-        textCalculator = new TextCalculator();
+        textCalculator = new TextCalculator(new Scanner(System.in));
     }
 
     @Test

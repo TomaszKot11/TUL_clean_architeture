@@ -10,11 +10,10 @@ import java.util.Scanner;
 <span class="fc" id="L10">        System.out.println(&quot;[Cmd/GUI] ?:&quot;);</span>
 <span class="fc" id="L11">        String mode = scanner.next().toLowerCase();</span>
         // by default GUI mode
-<span class="fc bfc" id="L13" title="All 2 branches covered.">        calculator = mode.equals(&quot;cmd&quot;) ? new TextCalculator() : new GUICalculator();</span>
-<span class="fc bfc" id="L14" title="All 2 branches covered.">        if(mode.equals(&quot;cmd&quot;))</span>
-<span class="fc" id="L15">            ((TextCalculator)calculator).setScanner(scanner);</span>
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        calculator = mode.equals(&quot;cmd&quot;) ? new TextCalculator(scanner) : new GUICalculator();</span>
 
-<span class="fc" id="L17">        calculator.runCalculator();</span>
-<span class="fc" id="L18">    }</span>
+<span class="fc" id="L15">        calculator.runCalculator();</span>
+<span class="fc" id="L16">        scanner.close();</span>
+<span class="fc" id="L17">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>
