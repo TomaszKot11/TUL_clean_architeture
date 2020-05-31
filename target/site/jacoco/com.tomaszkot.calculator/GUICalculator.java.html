@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pl"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GUICalculator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator</a> &gt; <a href="index.source.html" class="el_package">com.tomaszkot.calculator</a> &gt; <span class="el_source">GUICalculator.java</span></div><h1>GUICalculator.java</h1><pre class="source lang-java linenums">package com.tomaszkot.calculator;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.regex.Pattern;
+
+public class GUICalculator extends Calculator {
+    private static final int WINDOW_WIDTH = 410;
+    private static final int WINDOW_HEIGHT = 600;
+    private static final int BUTTON_WIDTH = 80;
+    private static final int BUTTON_HEIGHT = 70;
+    private static final int MARGIN_X = 20;
+    private static final int MARGIN_Y = 60;
+
+    private JFrame window;
+    private JTextField inText;
+    private JButton btnDiv, btn7, btn8, btn9,
+            btnMul, btn4, btn5, btn6, btnSub, btn1, btn2, btn3, btnAdd, btnPoint, btn0, btnEqual;
+    private String opt;
+<span class="fc" id="L20">    private boolean go = true;</span>
+<span class="fc" id="L21">    private boolean addWrite = true;</span>
+<span class="fc" id="L22">    private double val = 0;</span>
+    private Font btnFont;
+    private Font smallTxtBtnFont;
+<span class="fc" id="L25">    private int j = -1;</span>
+<span class="fc" id="L26">    private int k = -1;</span>
+<span class="fc" id="L27">    private int[] x = {MARGIN_X, MARGIN_X + 90, 200, 290, 380};</span>
+<span class="fc" id="L28">    private int[] y = {MARGIN_Y, MARGIN_Y + 100, MARGIN_Y + 180, MARGIN_Y + 260, MARGIN_Y + 340, MARGIN_Y + 420};</span>
+
+
+<span class="fc" id="L31">    public GUICalculator() {</span>
+<span class="fc" id="L32">        window = new JFrame(&quot;main.java.com.tomaszkot.calculator.Calculator&quot;);</span>
+<span class="fc" id="L33">        window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set the width and the Height of the window</span>
+<span class="fc" id="L34">        window.setLocationRelativeTo(null); // Move Window To Center</span>
+
+<span class="fc" id="L36">        configureBtnFonts();</span>
+<span class="fc" id="L37">        configureNumbersBtnListeners();</span>
+<span class="fc" id="L38">        configureFunctionalBtnListeners();</span>
+
+<span class="fc" id="L40">        inText = new JTextField(&quot;0&quot;);</span>
+<span class="fc" id="L41">        inText.setBounds(x[0], y[0], 350, 70);</span>
+<span class="fc" id="L42">        inText.setEditable(false);</span>
+<span class="fc" id="L43">        inText.setBackground(Color.WHITE);</span>
+<span class="fc" id="L44">        inText.setFont(new Font(&quot;Comic Sans MS&quot;, Font.PLAIN, 33));</span>
+<span class="fc" id="L45">        window.add(inText);</span>
+<span class="fc" id="L46">    }</span>
+
+    private void configureBtnFonts() {
+<span class="fc" id="L49">        btnFont = new Font(&quot;Comic Sans MS&quot;, Font.PLAIN, 28);</span>
+<span class="fc" id="L50">        smallTxtBtnFont = new Font(&quot;Comic Sans MS&quot;, Font.PLAIN, 24);</span>
+<span class="fc" id="L51">    }</span>
+
+    private void configureNumbersBtnListeners() {
+<span class="fc" id="L54">        btn0 = new JButton(&quot;0&quot;);</span>
+<span class="fc" id="L55">        btn0.setBounds(x[1], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L56">        btn0.setFont(btnFont);</span>
+<span class="fc" id="L57">        btn0.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L58">        btn0.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L61">                    inText.setText(&quot;0&quot;);</span>
+                } else {
+<span class="nc" id="L63">                    inText.setText(inText.getText() + &quot;0&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L66">                inText.setText(&quot;0&quot;);</span>
+<span class="nc" id="L67">                addWrite = true;</span>
+            }
+<span class="nc" id="L69">            go = true;</span>
+<span class="nc" id="L70">        });</span>
+<span class="fc" id="L71">        window.add(btn0);</span>
+
+
+<span class="fc" id="L74">        btn3 = new JButton(&quot;3&quot;);</span>
+<span class="fc" id="L75">        btn3.setBounds(x[2], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L76">        btn3.setFont(btnFont);</span>
+<span class="fc" id="L77">        btn3.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L78">        btn3.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L81">                    inText.setText(&quot;3&quot;);</span>
+                } else {
+<span class="nc" id="L83">                    inText.setText(inText.getText() + &quot;3&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L86">                inText.setText(&quot;3&quot;);</span>
+<span class="nc" id="L87">                addWrite = true;</span>
+            }
+<span class="nc" id="L89">            go = true;</span>
+<span class="nc" id="L90">        });</span>
+<span class="fc" id="L91">        window.add(btn3);</span>
+
+<span class="fc" id="L93">        btn2 = new JButton(&quot;2&quot;);</span>
+<span class="fc" id="L94">        btn2.setBounds(x[1], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L95">        btn2.setFont(btnFont);</span>
+<span class="fc" id="L96">        btn2.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L97">        btn2.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L99" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L100">                    inText.setText(&quot;2&quot;);</span>
+                } else {
+<span class="nc" id="L102">                    inText.setText(inText.getText() + &quot;2&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L105">                inText.setText(&quot;2&quot;);</span>
+<span class="nc" id="L106">                addWrite = true;</span>
+            }
+<span class="nc" id="L108">            go = true;</span>
+<span class="nc" id="L109">        });</span>
+<span class="fc" id="L110">        window.add(btn2);</span>
+
+<span class="fc" id="L112">        btn4 = new JButton(&quot;4&quot;);</span>
+<span class="fc" id="L113">        btn4.setBounds(x[0], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L114">        btn4.setFont(btnFont);</span>
+<span class="fc" id="L115">        btn4.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L116">        btn4.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L119">                    inText.setText(&quot;4&quot;);</span>
+                } else {
+<span class="nc" id="L121">                    inText.setText(inText.getText() + &quot;4&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L124">                inText.setText(&quot;4&quot;);</span>
+<span class="nc" id="L125">                addWrite = true;</span>
+            }
+<span class="nc" id="L127">            go = true;</span>
+<span class="nc" id="L128">        });</span>
+<span class="fc" id="L129">        window.add(btn4);</span>
+
+<span class="fc" id="L131">        btn7 = new JButton(&quot;7&quot;);</span>
+<span class="fc" id="L132">        btn7.setBounds(x[0], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L133">        btn7.setFont(btnFont);</span>
+<span class="fc" id="L134">        btn7.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L135">        btn7.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L138">                    inText.setText(&quot;7&quot;);</span>
+                } else {
+<span class="nc" id="L140">                    inText.setText(inText.getText() + &quot;7&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L143">                inText.setText(&quot;7&quot;);</span>
+<span class="nc" id="L144">                addWrite = true;</span>
+            }
+<span class="nc" id="L146">            go = true;</span>
+<span class="nc" id="L147">        });</span>
+<span class="fc" id="L148">        window.add(btn7);</span>
+
+<span class="fc" id="L150">        btn1 = new JButton(&quot;1&quot;);</span>
+<span class="fc" id="L151">        btn1.setBounds(x[0], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L152">        btn1.setFont(btnFont);</span>
+<span class="fc" id="L153">        btn1.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L154">        btn1.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L156" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L157">                    inText.setText(&quot;1&quot;);</span>
+                } else {
+<span class="nc" id="L159">                    inText.setText(inText.getText() + &quot;1&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L162">                inText.setText(&quot;1&quot;);</span>
+<span class="nc" id="L163">                addWrite = true;</span>
+            }
+<span class="nc" id="L165">            go = true;</span>
+<span class="nc" id="L166">        });</span>
+<span class="fc" id="L167">        window.add(btn1);</span>
+
+<span class="fc" id="L169">        btn8 = new JButton(&quot;8&quot;);</span>
+<span class="fc" id="L170">        btn8.setBounds(x[1], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L171">        btn8.setFont(btnFont);</span>
+<span class="fc" id="L172">        btn8.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L173">        btn8.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L174" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L176">                    inText.setText(&quot;8&quot;);</span>
+                } else {
+<span class="nc" id="L178">                    inText.setText(inText.getText() + &quot;8&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L181">                inText.setText(&quot;8&quot;);</span>
+<span class="nc" id="L182">                addWrite = true;</span>
+            }
+<span class="nc" id="L184">            go = true;</span>
+<span class="nc" id="L185">        });</span>
+<span class="fc" id="L186">        window.add(btn8);</span>
+
+<span class="fc" id="L188">        btn9 = new JButton(&quot;9&quot;);</span>
+<span class="fc" id="L189">        btn9.setBounds(x[2], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L190">        btn9.setFont(btnFont);</span>
+<span class="fc" id="L191">        btn9.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L192">        btn9.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L193" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L194" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L195">                    inText.setText(&quot;9&quot;);</span>
+                } else {
+<span class="nc" id="L197">                    inText.setText(inText.getText() + &quot;9&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L200">                inText.setText(&quot;9&quot;);</span>
+<span class="nc" id="L201">                addWrite = true;</span>
+            }
+<span class="nc" id="L203">            go = true;</span>
+<span class="nc" id="L204">        });</span>
+<span class="fc" id="L205">        window.add(btn9);</span>
+
+<span class="fc" id="L207">        btn5 = new JButton(&quot;5&quot;);</span>
+<span class="fc" id="L208">        btn5.setBounds(x[1], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L209">        btn5.setFont(btnFont);</span>
+<span class="fc" id="L210">        btn5.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L211">        btn5.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L212" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L213" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L214">                    inText.setText(&quot;5&quot;);</span>
+                } else {
+<span class="nc" id="L216">                    inText.setText(inText.getText() + &quot;5&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L219">                inText.setText(&quot;5&quot;);</span>
+<span class="nc" id="L220">                addWrite = true;</span>
+            }
+<span class="nc" id="L222">            go = true;</span>
+<span class="nc" id="L223">        });</span>
+<span class="fc" id="L224">        window.add(btn5);</span>
+
+<span class="fc" id="L226">        btn6 = new JButton(&quot;6&quot;);</span>
+<span class="fc" id="L227">        btn6.setBounds(x[2], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L228">        btn6.setFont(btnFont);</span>
+<span class="fc" id="L229">        btn6.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L230">        btn6.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L231" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc bnc" id="L232" title="All 2 branches missed.">                if (Pattern.matches(&quot;[0]*&quot;, inText.getText())) {</span>
+<span class="nc" id="L233">                    inText.setText(&quot;6&quot;);</span>
+                } else {
+<span class="nc" id="L235">                    inText.setText(inText.getText() + &quot;6&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L238">                inText.setText(&quot;6&quot;);</span>
+<span class="nc" id="L239">                addWrite = true;</span>
+            }
+<span class="nc" id="L241">            go = true;</span>
+<span class="nc" id="L242">        });</span>
+<span class="fc" id="L243">        window.add(btn6);</span>
+<span class="fc" id="L244">    }</span>
+
+    private void configureFunctionalBtnListeners() {
+<span class="fc" id="L247">        btnDiv = new JButton(&quot;/&quot;);</span>
+<span class="fc" id="L248">        btnDiv.setBounds(x[0], y[1], 3 * BUTTON_WIDTH + 20, BUTTON_HEIGHT);</span>
+<span class="fc" id="L249">        btnDiv.setFont(btnFont);</span>
+<span class="fc" id="L250">        btnDiv.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L251">        btnDiv.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">            if (Pattern.matches(&quot;([-]?\\d+[.]\\d*)|(\\d+)&quot;, inText.getText()))</span>
+<span class="nc bnc" id="L253" title="All 2 branches missed.">                if (go) {</span>
+<span class="nc bnc" id="L254" title="All 2 branches missed.">                    opt = opt == null ? &quot;+&quot; : opt;</span>
+<span class="nc" id="L255">                    val = performOperataion(Double.toString(val), opt, inText.getText());</span>
+<span class="nc bnc" id="L256" title="All 2 branches missed.">                    if (Pattern.matches(&quot;[-]?[\\d]+[.][0]*&quot;, String.valueOf(val))) {</span>
+<span class="nc" id="L257">                        inText.setText(String.valueOf((int) val));</span>
+                    } else {
+<span class="nc" id="L259">                        inText.setText(String.valueOf(val));</span>
+                    }
+<span class="nc" id="L261">                    opt = &quot;/&quot;;</span>
+<span class="nc" id="L262">                    go = false;</span>
+<span class="nc" id="L263">                    addWrite = false;</span>
+                } else {
+<span class="nc" id="L265">                    opt = &quot;/&quot;;</span>
+                }
+<span class="nc" id="L267">        });</span>
+<span class="fc" id="L268">        window.add(btnDiv);</span>
+
+<span class="fc" id="L270">        btnMul = new JButton(&quot;*&quot;);</span>
+<span class="fc" id="L271">        btnMul.setBounds(x[3], y[1], BUTTON_WIDTH, 2 * BUTTON_HEIGHT + 10);</span>
+<span class="fc" id="L272">        btnMul.setFont(btnFont);</span>
+<span class="fc" id="L273">        btnMul.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L274">        btnMul.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L275" title="All 2 branches missed.">            if (Pattern.matches(&quot;([-]?\\d+[.]\\d*)|(\\d+)&quot;, inText.getText()))</span>
+<span class="nc bnc" id="L276" title="All 2 branches missed.">                if (go) {</span>
+<span class="nc bnc" id="L277" title="All 2 branches missed.">                    opt = opt == null ? &quot;+&quot; : opt;</span>
+<span class="nc" id="L278">                    val = performOperataion(Double.toString(val), opt, inText.getText());</span>
+<span class="nc bnc" id="L279" title="All 2 branches missed.">                    if (Pattern.matches(&quot;[-]?[\\d]+[.][0]*&quot;, String.valueOf(val))) {</span>
+<span class="nc" id="L280">                        inText.setText(String.valueOf((int) val));</span>
+                    } else {
+<span class="nc" id="L282">                        inText.setText(String.valueOf(val));</span>
+                    }
+<span class="nc" id="L284">                    opt = &quot;*&quot;;</span>
+<span class="nc" id="L285">                    go = false;</span>
+<span class="nc" id="L286">                    addWrite = false;</span>
+                } else {
+<span class="nc" id="L288">                    opt = &quot;*&quot;;</span>
+                }
+<span class="nc" id="L290">        });</span>
+<span class="fc" id="L291">        window.add(btnMul);</span>
+
+<span class="fc" id="L293">        btnSub = new JButton(&quot;-&quot;);</span>
+<span class="fc" id="L294">        btnSub.setBounds(x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L295">        btnSub.setFont(btnFont);</span>
+<span class="fc" id="L296">        btnSub.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L297">        btnSub.addActionListener(event -&gt; {</span>
+            ;
+<span class="nc bnc" id="L299" title="All 2 branches missed.">            if (Pattern.matches(&quot;([-]?\\d+[.]\\d*)|(\\d+)&quot;, inText.getText()))</span>
+<span class="nc bnc" id="L300" title="All 2 branches missed.">                if (go) {</span>
+<span class="nc bnc" id="L301" title="All 2 branches missed.">                    opt = opt == null ? &quot;-&quot; : opt;</span>
+<span class="nc" id="L302">                    val = performOperataion(Double.toString(val), opt, inText.getText());</span>
+<span class="nc bnc" id="L303" title="All 2 branches missed.">                    if (Pattern.matches(&quot;[-]?[\\d]+[.][0]*&quot;, String.valueOf(val))) {</span>
+<span class="nc" id="L304">                        inText.setText(String.valueOf((int) val));</span>
+                    } else {
+<span class="nc" id="L306">                        inText.setText(String.valueOf(val));</span>
+                    }
+
+<span class="nc" id="L309">                    opt = &quot;-&quot;;</span>
+<span class="nc" id="L310">                    go = false;</span>
+<span class="nc" id="L311">                    addWrite = false;</span>
+                } else {
+<span class="nc" id="L313">                    opt = &quot;-&quot;;</span>
+                }
+<span class="nc" id="L315">        });</span>
+<span class="fc" id="L316">        window.add(btnSub);</span>
+
+
+<span class="fc" id="L319">        btnAdd = new JButton(&quot;+&quot;);</span>
+<span class="fc" id="L320">        btnAdd.setBounds(x[3], y[4], BUTTON_WIDTH, 2 * BUTTON_HEIGHT + 10);</span>
+<span class="fc" id="L321">        btnAdd.setFont(btnFont);</span>
+<span class="fc" id="L322">        btnAdd.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L323">        btnAdd.addActionListener(event -&gt; {</span>
+            ;
+<span class="nc bnc" id="L325" title="All 2 branches missed.">            if (Pattern.matches(&quot;([-]?\\d+[.]\\d*)|(\\d+)&quot;, inText.getText()))</span>
+<span class="nc bnc" id="L326" title="All 2 branches missed.">                if (go) {</span>
+<span class="nc bnc" id="L327" title="All 2 branches missed.">                    opt = opt == null ? &quot;+&quot; : opt;</span>
+<span class="nc" id="L328">                    val = performOperataion(Double.toString(val), opt, inText.getText());</span>
+<span class="nc" id="L329">                    String elo = inText.getText();</span>
+<span class="nc bnc" id="L330" title="All 2 branches missed.">                    if (Pattern.matches(&quot;[-]?[\\d]+[.][0]*&quot;, String.valueOf(val))) {</span>
+<span class="nc" id="L331">                        inText.setText(String.valueOf((int) val));</span>
+                    } else {
+<span class="nc" id="L333">                        inText.setText(String.valueOf(val));</span>
+                    }
+<span class="nc" id="L335">                    opt = &quot;+&quot;;</span>
+<span class="nc" id="L336">                    go = false;</span>
+<span class="nc" id="L337">                    addWrite = false;</span>
+<span class="nc" id="L338">                } else {</span>
+<span class="nc" id="L339">                    opt = &quot;+&quot;;</span>
+                }
+<span class="nc" id="L341">        });</span>
+<span class="fc" id="L342">        window.add(btnAdd);</span>
+
+<span class="fc" id="L344">        btnPoint = new JButton(&quot;.&quot;);</span>
+<span class="fc" id="L345">        btnPoint.setBounds(x[0], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L346">        btnPoint.setFont(new Font(&quot;Comic Sans MS&quot;, Font.BOLD, 32));</span>
+<span class="fc" id="L347">        btnPoint.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L348">        btnPoint.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L349" title="All 2 branches missed.">            if (addWrite) {</span>
+<span class="nc" id="L350">                inText.setText(inText.getText() + &quot;.&quot;);</span>
+            } else {
+<span class="nc" id="L352">                inText.setText(&quot;0.&quot;);</span>
+<span class="nc" id="L353">                addWrite = true;</span>
+            }
+<span class="nc" id="L355">            go = true;</span>
+<span class="nc" id="L356">        });</span>
+<span class="fc" id="L357">        window.add(btnPoint);</span>
+
+
+<span class="fc" id="L360">        btnEqual = new JButton(&quot;=&quot;);</span>
+<span class="fc" id="L361">        btnEqual.setBounds(x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);</span>
+<span class="fc" id="L362">        btnEqual.setFont(btnFont);</span>
+<span class="fc" id="L363">        btnEqual.setCursor(new Cursor(Cursor.HAND_CURSOR));</span>
+<span class="fc" id="L364">        btnEqual.addActionListener(event -&gt; {</span>
+<span class="nc bnc" id="L365" title="All 2 branches missed.">            if (Pattern.matches(&quot;([-]?\\d+[.]\\d*)|(\\d+)&quot;, inText.getText()))</span>
+<span class="nc bnc" id="L366" title="All 2 branches missed.">                if (go) {</span>
+<span class="nc bnc" id="L367" title="All 2 branches missed.">                    opt = opt == null ? &quot;=&quot; : opt;</span>
+<span class="nc" id="L368">                    val = performOperataion(Double.toString(val), opt, inText.getText());</span>
+<span class="nc bnc" id="L369" title="All 2 branches missed.">                    if (Pattern.matches(&quot;[-]?[\\d]+[.][0]*&quot;, String.valueOf(val))) {</span>
+<span class="nc" id="L370">                        inText.setText(String.valueOf((int) val));</span>
+                    } else {
+<span class="nc" id="L372">                        inText.setText(String.valueOf(val));</span>
+                    }
+<span class="nc" id="L374">                    opt = &quot;=&quot;;</span>
+<span class="nc" id="L375">                    addWrite = false;</span>
+                }
+<span class="nc" id="L377">        });</span>
+<span class="fc" id="L378">        window.add(btnEqual);</span>
+<span class="fc" id="L379">    }</span>
+
+    @Override
+    protected double performOperataion(String arg11, String optt, String arg22) {
+<span class="nc" id="L383">        Double arg1 = str2Double(arg11);</span>
+<span class="nc" id="L384">        Double arg2 = str2Double(arg22);</span>
+
+<span class="nc" id="L386">        inText.setFont(inText.getFont().deriveFont(Font.BOLD));</span>
+<span class="nc bnc" id="L387" title="All 2 branches missed.">        if (optt.equals(&quot;+&quot;)) {</span>
+<span class="nc" id="L388">            return arg1 + arg2;</span>
+<span class="nc bnc" id="L389" title="All 2 branches missed.">        } else if (optt.equals(&quot;-&quot;)) {</span>
+<span class="nc" id="L390">            return arg1 - arg2;</span>
+<span class="nc bnc" id="L391" title="All 2 branches missed.">        } else if (optt.equals(&quot;*&quot;)) {</span>
+<span class="nc" id="L392">            return arg1 * arg2;</span>
+<span class="nc bnc" id="L393" title="All 2 branches missed.">        } else if (optt.equals(&quot;/&quot;)) {</span>
+<span class="nc" id="L394">            return arg1 / arg2;</span>
+        }
+<span class="nc" id="L396">        inText.setFont(inText.getFont().deriveFont(Font.PLAIN));</span>
+<span class="nc" id="L397">        return arg2;</span>
+    }
+
+    @Override
+    public void runCalculator() {
+<span class="fc" id="L402">        window.setLayout(null);</span>
+<span class="fc" id="L403">        window.setResizable(false);</span>
+<span class="fc" id="L404">        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // If Click into The Red Button =&gt; End The Processus</span>
+<span class="fc" id="L405">        window.setVisible(true);</span>
+<span class="fc" id="L406">    }</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

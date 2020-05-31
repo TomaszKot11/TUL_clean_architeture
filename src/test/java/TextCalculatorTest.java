@@ -2,11 +2,7 @@ package test.java;
 import com.tomaszkot.calculator.Calculator;
 import com.tomaszkot.calculator.TextCalculator;
 import org.junit.*;
-import org.mockito.Mock;
-
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 

@@ -3,13 +3,16 @@ package com.tomaszkot.calculator;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    public static Scanner scanner = new Scanner(System.in);
+    public static Calculator calculator;
 
+    public static void main(String[] args) {
         System.out.println("[Cmd/GUI] ?:");
         String mode = scanner.next().toLowerCase();
         // by default GUI mode
-        Calculator calculator = mode.equals("cmd") ? new TextCalculator() : new GUICalculator();
+        calculator = mode.equals("cmd") ? new TextCalculator() : new GUICalculator();
+        if(mode.equals("cmd"))
+            ((TextCalculator)calculator).setScanner(scanner);
 
         calculator.runCalculator();
     }
