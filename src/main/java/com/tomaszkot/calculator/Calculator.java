@@ -17,7 +17,7 @@ public abstract class Calculator {
             case "-":
                 return arg1Double - arg2Double;
             default:
-                System.out.println("Nie ma takiej operacji jak" + op + "!");
+                System.out.println("Nie ma takiej operacji jak " + op + "!");
                 return 0.0;
         }
     }
