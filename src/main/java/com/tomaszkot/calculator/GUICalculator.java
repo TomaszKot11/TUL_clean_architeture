@@ -34,6 +34,7 @@ public class GUICalculator extends Calculator {
         window.setSize(WINDOW_WIDTH, WINDOW_HEIGHT); // Set the width and the Height of the window
         window.setLocationRelativeTo(null); // Move Window To Center
 
+        initializeButtons();
         configureBtnFonts();
         configureNumbersBtnListeners();
         configureFunctionalBtnListeners();
@@ -50,6 +51,25 @@ public class GUICalculator extends Calculator {
     private void configureBtnFonts() {
         btnFont = new Font("Comic Sans MS", Font.PLAIN, 28);
         smallTxtBtnFont = new Font("Comic Sans MS", Font.PLAIN, 24);
+    }
+
+    private void initializeButtons() {
+        btn0 = new JButton("0");
+        btn3 = new JButton("3");
+        btn2 = new JButton("2");
+        btn4 = new JButton("4");
+        btn7 = new JButton("7");
+        btn1 = new JButton("1");
+        btn8 = new JButton("8");
+        btn9 = new JButton("9");
+        btn5 = new JButton("5");
+        btn6 = new JButton("6");
+        btnDiv = new JButton("/");
+        btnMul = new JButton("*");
+        btnSub = new JButton("-");
+        btnAdd = new JButton("+");
+        btnPoint = new JButton(".");
+        btnEqual = new JButton("=");
     }
 
     private void drawButtonsInWindow() {
@@ -73,7 +93,6 @@ public class GUICalculator extends Calculator {
     }
 
     private void configureNumbersBtnListeners() {
-        btn0 = new JButton("0");
         calculatorBtnListenerConfig(btn0, x[1], y[5], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -88,7 +107,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn3 = new JButton("3");
         calculatorBtnListenerConfig(btn3, x[2], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -103,7 +121,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn2 = new JButton("2");
         calculatorBtnListenerConfig(btn2, x[1], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
                     if (addWrite) {
                         if (Pattern.matches("[0]*", inText.getText())) {
@@ -118,7 +135,6 @@ public class GUICalculator extends Calculator {
                     go = true;
         });
 
-        btn4 = new JButton("4");
         calculatorBtnListenerConfig(btn4, x[0], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -133,7 +149,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn7 = new JButton("7");
         calculatorBtnListenerConfig(btn7, x[0], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -148,7 +163,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn1 = new JButton("1");
         calculatorBtnListenerConfig(btn1, x[0], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -163,7 +177,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn8 = new JButton("8");
         calculatorBtnListenerConfig(btn8, x[1], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -178,7 +191,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn9 = new JButton("9");
         calculatorBtnListenerConfig(btn9, x[2], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -193,7 +205,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn5 = new JButton("5");
         calculatorBtnListenerConfig(btn5, x[1], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -208,7 +219,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btn6 = new JButton("6");
         calculatorBtnListenerConfig(btn6, x[2], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
@@ -234,7 +244,6 @@ public class GUICalculator extends Calculator {
     }
 
     private void configureFunctionalBtnListeners() {
-        btnDiv = new JButton("/");
         calculatorBtnListenerConfig(btnDiv, x[0], y[1], 3*BUTTON_WIDTH + 20, BUTTON_HEIGHT, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
@@ -253,7 +262,6 @@ public class GUICalculator extends Calculator {
                 }
         });
 
-        btnMul = new JButton("*");
         calculatorBtnListenerConfig(btnMul, x[3], y[1], BUTTON_WIDTH, 2*BUTTON_HEIGHT + 10, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
@@ -272,7 +280,6 @@ public class GUICalculator extends Calculator {
                 }
         });
 
-        btnSub = new JButton("-");
         calculatorBtnListenerConfig(btnSub, x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             ;
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
@@ -293,7 +300,6 @@ public class GUICalculator extends Calculator {
                 }
         });
 
-        btnAdd = new JButton("+");
         calculatorBtnListenerConfig(btnAdd, x[3], y[4], BUTTON_WIDTH, 2*BUTTON_HEIGHT+10, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
@@ -313,7 +319,6 @@ public class GUICalculator extends Calculator {
                 }
         });
 
-        btnPoint = new JButton(".");
         calculatorBtnListenerConfig(btnPoint, x[0], y[5], BUTTON_WIDTH,  BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 inText.setText(inText.getText() + ".");
@@ -324,7 +329,6 @@ public class GUICalculator extends Calculator {
             go = true;
         });
 
-        btnEqual = new JButton("=");
         calculatorBtnListenerConfig(btnEqual, x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
