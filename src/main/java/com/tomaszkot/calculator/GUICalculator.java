@@ -37,6 +37,7 @@ public class GUICalculator extends Calculator {
         configureBtnFonts();
         configureNumbersBtnListeners();
         configureFunctionalBtnListeners();
+        drawButtonsInWindow();
 
         inText = new JTextField("0");
         inText.setBounds(x[0], y[0], 350, 70);
@@ -49,6 +50,26 @@ public class GUICalculator extends Calculator {
     private void configureBtnFonts() {
         btnFont = new Font("Comic Sans MS", Font.PLAIN, 28);
         smallTxtBtnFont = new Font("Comic Sans MS", Font.PLAIN, 24);
+    }
+
+    private void drawButtonsInWindow() {
+        window.add(btn0);
+        window.add(btn1);
+        window.add(btn2);
+        window.add(btn3);
+        window.add(btn4);
+        window.add(btn5);
+        window.add(btn6);
+        window.add(btn7);
+        window.add(btn8);
+        window.add(btn9);
+        window.add(btnDiv);
+        window.add(btnMul);
+        window.add(btnSub);
+        window.add(btnAdd);
+        window.add(btnPoint);
+        window.add(btnEqual);
+
     }
 
     private void configureNumbersBtnListeners() {
@@ -66,8 +87,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn0);
-
 
         btn3 = new JButton("3");
         calculatorBtnListenerConfig(btn3, x[2], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -83,7 +102,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn3);
 
         btn2 = new JButton("2");
         calculatorBtnListenerConfig(btn2, x[1], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -99,7 +117,6 @@ public class GUICalculator extends Calculator {
                     }
                     go = true;
         });
-        window.add(btn2);
 
         btn4 = new JButton("4");
         calculatorBtnListenerConfig(btn4, x[0], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -115,7 +132,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn4);
 
         btn7 = new JButton("7");
         calculatorBtnListenerConfig(btn7, x[0], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -131,7 +147,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn7);
 
         btn1 = new JButton("1");
         calculatorBtnListenerConfig(btn1, x[0], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -147,7 +162,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn1);
 
         btn8 = new JButton("8");
         calculatorBtnListenerConfig(btn8, x[1], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -163,7 +177,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn8);
 
         btn9 = new JButton("9");
         calculatorBtnListenerConfig(btn9, x[2], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -179,7 +192,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn9);
 
         btn5 = new JButton("5");
         calculatorBtnListenerConfig(btn5, x[1], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -195,7 +207,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn5);
 
         btn6 = new JButton("6");
         calculatorBtnListenerConfig(btn6, x[2], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -211,7 +222,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btn6);
     }
 
     private void calculatorBtnListenerConfig(JButton btn, int x, int y, int width, int height, ActionListener al) {
@@ -242,7 +252,6 @@ public class GUICalculator extends Calculator {
                     opt = "/";
                 }
         });
-        window.add(btnDiv);
 
         btnMul = new JButton("*");
         calculatorBtnListenerConfig(btnMul, x[3], y[1], BUTTON_WIDTH, 2*BUTTON_HEIGHT + 10, event -> {
@@ -262,7 +271,6 @@ public class GUICalculator extends Calculator {
                     opt = "*";
                 }
         });
-        window.add(btnMul);
 
         btnSub = new JButton("-");
         calculatorBtnListenerConfig(btnSub, x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -284,8 +292,6 @@ public class GUICalculator extends Calculator {
                     opt = "-";
                 }
         });
-        window.add(btnSub);
-
 
         btnAdd = new JButton("+");
         calculatorBtnListenerConfig(btnAdd, x[3], y[4], BUTTON_WIDTH, 2*BUTTON_HEIGHT+10, event -> {
@@ -306,7 +312,6 @@ public class GUICalculator extends Calculator {
                     opt = "+";
                 }
         });
-        window.add(btnAdd);
 
         btnPoint = new JButton(".");
         calculatorBtnListenerConfig(btnPoint, x[0], y[5], BUTTON_WIDTH,  BUTTON_HEIGHT, event -> {
@@ -318,8 +323,6 @@ public class GUICalculator extends Calculator {
             }
             go = true;
         });
-        window.add(btnPoint);
-
 
         btnEqual = new JButton("=");
         calculatorBtnListenerConfig(btnEqual, x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
@@ -336,7 +339,6 @@ public class GUICalculator extends Calculator {
                     addWrite = false;
                 }
         });
-        window.add(btnEqual);
     }
 
     @Override
