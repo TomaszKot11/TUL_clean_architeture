@@ -2,6 +2,7 @@ package com.tomaszkot.calculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 
 public class GUICalculator extends Calculator {
@@ -243,12 +244,18 @@ public class GUICalculator extends Calculator {
         window.add(btn6);
     }
 
+    private void calculatorBtnListenerConfig(JButton btn, int x, int y, int width, int height, ActionListener al) {
+        btn.setBounds(x, y, width, height);
+        btn.setFont(btnFont);
+        btn.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        btn.addActionListener(al);
+
+    }
+
     private void configureFunctionalBtnListeners() {
         btnDiv = new JButton("/");
-        btnDiv.setBounds(x[0], y[1], 3 * BUTTON_WIDTH + 20, BUTTON_HEIGHT);
-        btnDiv.setFont(btnFont);
-        btnDiv.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnDiv.addActionListener(event -> {
+        calculatorBtnListenerConfig(btnDiv, x[0], y[1], 3*BUTTON_WIDTH + 20, BUTTON_HEIGHT, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "+" : opt;
@@ -268,10 +275,7 @@ public class GUICalculator extends Calculator {
         window.add(btnDiv);
 
         btnMul = new JButton("*");
-        btnMul.setBounds(x[3], y[1], BUTTON_WIDTH, 2 * BUTTON_HEIGHT + 10);
-        btnMul.setFont(btnFont);
-        btnMul.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnMul.addActionListener(event -> {
+        calculatorBtnListenerConfig(btnMul, x[3], y[1], BUTTON_WIDTH, 2*BUTTON_HEIGHT + 10, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "+" : opt;
@@ -291,10 +295,7 @@ public class GUICalculator extends Calculator {
         window.add(btnMul);
 
         btnSub = new JButton("-");
-        btnSub.setBounds(x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btnSub.setFont(btnFont);
-        btnSub.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnSub.addActionListener(event -> {
+        calculatorBtnListenerConfig(btnSub, x[3], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             ;
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
@@ -317,11 +318,7 @@ public class GUICalculator extends Calculator {
 
 
         btnAdd = new JButton("+");
-        btnAdd.setBounds(x[3], y[4], BUTTON_WIDTH, 2 * BUTTON_HEIGHT + 10);
-        btnAdd.setFont(btnFont);
-        btnAdd.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnAdd.addActionListener(event -> {
-            ;
+        calculatorBtnListenerConfig(btnAdd, x[3], y[4], BUTTON_WIDTH, 2*BUTTON_HEIGHT+10, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "+" : opt;
@@ -342,10 +339,7 @@ public class GUICalculator extends Calculator {
         window.add(btnAdd);
 
         btnPoint = new JButton(".");
-        btnPoint.setBounds(x[0], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btnPoint.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
-        btnPoint.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnPoint.addActionListener(event -> {
+        calculatorBtnListenerConfig(btnPoint, x[0], y[5], BUTTON_WIDTH,  BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 inText.setText(inText.getText() + ".");
             } else {
@@ -358,10 +352,7 @@ public class GUICalculator extends Calculator {
 
 
         btnEqual = new JButton("=");
-        btnEqual.setBounds(x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btnEqual.setFont(btnFont);
-        btnEqual.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btnEqual.addActionListener(event -> {
+        calculatorBtnListenerConfig(btnEqual, x[2], y[5], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (Pattern.matches("([-]?\\d+[.]\\d*)|(\\d+)", inText.getText()))
                 if (go) {
                     opt = opt == null ? "=" : opt;
