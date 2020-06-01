@@ -53,10 +53,7 @@ public class GUICalculator extends Calculator {
 
     private void configureNumbersBtnListeners() {
         btn0 = new JButton("0");
-        btn0.setBounds(x[1], y[5], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn0.setFont(btnFont);
-        btn0.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn0.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn0, x[1], y[5], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("0");
@@ -73,10 +70,7 @@ public class GUICalculator extends Calculator {
 
 
         btn3 = new JButton("3");
-        btn3.setBounds(x[2], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn3.setFont(btnFont);
-        btn3.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn3.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn3, x[2], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("3");
@@ -92,29 +86,23 @@ public class GUICalculator extends Calculator {
         window.add(btn3);
 
         btn2 = new JButton("2");
-        btn2.setBounds(x[1], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn2.setFont(btnFont);
-        btn2.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn2.addActionListener(event -> {
-            if (addWrite) {
-                if (Pattern.matches("[0]*", inText.getText())) {
-                    inText.setText("2");
-                } else {
-                    inText.setText(inText.getText() + "2");
-                }
-            } else {
-                inText.setText("2");
-                addWrite = true;
-            }
-            go = true;
+        calculatorBtnListenerConfig(btn2, x[1], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
+                    if (addWrite) {
+                        if (Pattern.matches("[0]*", inText.getText())) {
+                            inText.setText("2");
+                        } else {
+                            inText.setText(inText.getText() + "2");
+                        }
+                    } else {
+                        inText.setText("2");
+                        addWrite = true;
+                    }
+                    go = true;
         });
         window.add(btn2);
 
         btn4 = new JButton("4");
-        btn4.setBounds(x[0], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn4.setFont(btnFont);
-        btn4.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn4.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn4, x[0], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("4");
@@ -130,10 +118,7 @@ public class GUICalculator extends Calculator {
         window.add(btn4);
 
         btn7 = new JButton("7");
-        btn7.setBounds(x[0], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn7.setFont(btnFont);
-        btn7.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn7.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn7, x[0], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("7");
@@ -149,10 +134,7 @@ public class GUICalculator extends Calculator {
         window.add(btn7);
 
         btn1 = new JButton("1");
-        btn1.setBounds(x[0], y[4], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn1.setFont(btnFont);
-        btn1.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn1.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn1, x[0], y[4], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("1");
@@ -168,10 +150,7 @@ public class GUICalculator extends Calculator {
         window.add(btn1);
 
         btn8 = new JButton("8");
-        btn8.setBounds(x[1], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn8.setFont(btnFont);
-        btn8.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn8.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn8, x[1], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("8");
@@ -187,10 +166,7 @@ public class GUICalculator extends Calculator {
         window.add(btn8);
 
         btn9 = new JButton("9");
-        btn9.setBounds(x[2], y[2], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn9.setFont(btnFont);
-        btn9.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn9.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn9, x[2], y[2], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("9");
@@ -206,10 +182,7 @@ public class GUICalculator extends Calculator {
         window.add(btn9);
 
         btn5 = new JButton("5");
-        btn5.setBounds(x[1], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn5.setFont(btnFont);
-        btn5.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn5.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn5, x[1], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("5");
@@ -225,10 +198,7 @@ public class GUICalculator extends Calculator {
         window.add(btn5);
 
         btn6 = new JButton("6");
-        btn6.setBounds(x[2], y[3], BUTTON_WIDTH, BUTTON_HEIGHT);
-        btn6.setFont(btnFont);
-        btn6.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        btn6.addActionListener(event -> {
+        calculatorBtnListenerConfig(btn6, x[2], y[3], BUTTON_WIDTH, BUTTON_HEIGHT, event -> {
             if (addWrite) {
                 if (Pattern.matches("[0]*", inText.getText())) {
                     inText.setText("6");
